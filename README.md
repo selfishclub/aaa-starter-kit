@@ -125,6 +125,17 @@ Vercel / GitHub Pages (공개 홈페이지)
 - **배포**: [Vercel](https://vercel.com) 또는 [GitHub Pages](https://pages.github.com)
 - **버전 관리**: GitHub + [obsidian-git](https://github.com/Vinzent03/obsidian-git) 플러그인
 
+## 크레딧
+
+이 키트는 **Selfish Club의 AAA TEAM**이 2026년 3~4월 스터디를 운영하며 실제로 사용한 시스템을 추려낸 결과물입니다.
+
+- **AAA TEAM · Selfish Club** — 콘텐츠·운영·검증
+- **다다 (김다솔)** — 전체 시스템 구조 설계 및 실현
+  - Obsidian vault ↔ Claude Code 슬래시 명령어 ↔ Astro 사이트로 이어지는 2-repo 아키텍처 전반을 설계하고, 실제 운영 가능한 형태로 구현
+- 그 외 AAA TEAM 빌더 멤버들 — 주차별 과제 제출 및 피드백 루프 검증
+
+이 키트를 사용하거나 변형해 공개하실 때, 위 크레딧을 어딘가에 남겨주시면 감사하겠습니다.
+
 ## 라이선스
 
 MIT — 자유롭게 복제·변형·재배포 가능합니다. 출처만 밝혀주시면 감사하겠습니다.
