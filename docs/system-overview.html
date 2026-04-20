@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AAA TEAM 시스템 한눈에 보기 · 2026-04-20</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --yellow: #FBE830;
+    --yellow-soft: #FFFBE6;
+    --ink: #0F0F12;
+    --ink-2: #1f1f24;
+    --gray: #8B8B95;
+    --line: #E8E8EE;
+    --soft: #F4F4F6;
+  }
+  html, body {
+    font-family: 'Pretendard Variable', -apple-system, sans-serif;
+    background: #fafafa;
+    color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 56px 32px 96px;
+  }
+
+  /* ── HERO ── */
+  .hero { text-align: center; margin-bottom: 48px; }
+  .hero .kicker {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--yellow);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    padding: 6px 14px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  .hero h1 .hl { background: linear-gradient(180deg, transparent 60%, var(--yellow) 60%); padding: 0 4px; }
+  .hero .sub {
+    font-size: 16px;
+    color: var(--gray);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .hero .meta {
+    font-size: 12px;
+    color: #bbb;
+    margin-top: 10px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 56px; }
+  .section-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 20px; }
+  .section-head .num {
+    font-family: 'Menlo', monospace;
+    background: var(--yellow);
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 4px;
+    letter-spacing: 0;
+  }
+  .section-head h2 { font-size: 24px; font-weight: 800; letter-spacing: -0.3px; }
+  .section-head .tag { font-size: 12px; color: var(--gray); font-weight: 600; margin-left: auto; }
+
+  /* ── FLOW 3-COLUMN ── */
+  .flow { display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 20px; }
+  .col { background: #fff; border: 1.5px solid var(--line); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; }
+  .col.highlight { background: var(--yellow-soft); border-color: var(--yellow); }
+  .col-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--gray);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .col-title { font-size: 17px; font-weight: 800; margin-bottom: 14px; letter-spacing: -0.2px; }
+  .col-desc { font-size: 13px; color: #555; line-height: 1.55; margin-bottom: 14px; }
+
+  /* 멤버 칩 */
+  .chips { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-bottom: 12px; }
+  .chip {
+    background: var(--soft);
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    padding: 8px 4px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .chip.admin { background: var(--yellow); border-color: var(--yellow); }
+
+  /* GitHub 레포 박스 */
+  .repo {
+    background: #fff;
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .repo.focus { border-color: var(--yellow); background: #fffef3; }
+  .repo .rn { font-family: 'Menlo', monospace; font-size: 13px; color: #B8860B; font-weight: 700; margin-bottom: 4px; }
+  .repo .rd { font-size: 11px; color: #666; }
+  .pipe {
+    font-size: 11px;
+    color: #888;
+    text-align: center;
+    font-family: 'Menlo', monospace;
+    margin: 4px 0 8px;
+  }
+  .pipe .arr { color: var(--ink); font-weight: 800; }
+
+  /* URL 박스 */
+  .url-box {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+  .url-box .big {
+    font-family: 'Menlo', monospace;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--yellow);
+    word-break: break-all;
+  }
+  .url-box .sub { font-size: 11px; color: #A6A6AD; margin-top: 4px; }
+
+  /* 탭 그리드 */
+  .tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .tab {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    padding: 8px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    color: #333;
+  }
+  .tab.primary { background: var(--yellow); border-color: var(--yellow); color: var(--ink); font-weight: 800; }
+
+  /* ── FOLDER MAP ── */
+  .folder-map {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    background: #fff;
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    padding: 22px;
+  }
+  .folder-col-title {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--gray);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .folder-col-title.pub { color: #B8860B; }
+  .folder-item {
+    font-family: 'Menlo', monospace;
+    font-size: 12px;
+    padding: 7px 10px;
+    margin-bottom: 4px;
+    border-radius: 6px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .folder-item.pub { background: var(--yellow-soft); color: #665500; }
+  .folder-item.priv { background: var(--soft); color: #999; }
+  .folder-item .arrow { font-size: 10px; color: #aaa; margin: 0 4px; }
+  .folder-item .tgt { font-family: 'Pretendard Variable', sans-serif; font-size: 11px; color: #555; font-weight: 600; }
+
+  /* ── COMMANDS ── */
+  .cmds { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .cmd {
+    background: #fff;
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    padding: 16px 18px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .cmd .name {
+    font-family: 'Menlo', monospace;
+    background: var(--ink);
+    color: var(--yellow);
+    font-size: 12px;
+    font-weight: 800;
+    padding: 5px 9px;
+    border-radius: 5px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .cmd .body { flex: 1; }
+  .cmd .t { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+  .cmd .d { font-size: 12px; color: #666; line-height: 1.55; }
+
+  /* ── TIMELINE/QUICKFACTS ── */
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .fact {
+    background: #fff;
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 14px;
+    text-align: center;
+  }
+  .fact .n { font-size: 28px; font-weight: 800; color: var(--ink); letter-spacing: -1px; }
+  .fact .l { font-size: 11px; color: var(--gray); font-weight: 600; margin-top: 4px; }
+
+  /* ── LEGEND ── */
+  .legend {
+    background: var(--yellow-soft);
+    border: 1px solid var(--yellow);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 12px;
+    color: #6B5A00;
+    line-height: 1.6;
+  }
+  .legend strong { color: var(--ink); }
+
+  /* Footer */
+  .foot { text-align: center; font-size: 11px; color: #aaa; margin-top: 40px; }
+
+  @media (max-width: 900px) {
+    .flow { grid-template-columns: 1fr; }
+    .folder-map { grid-template-columns: 1fr; }
+    .cmds { grid-template-columns: 1fr; }
+    .facts { grid-template-columns: 1fr 1fr; }
+    .hero h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="kicker">SELFISH CLUB × AAA TEAM</span>
+    <h1>AAA TEAM 시스템<br/><span class="hl">한눈에 보기</span></h1>
+    <div class="sub">멤버가 Obsidian에 글을 쓰면 → GitHub에 모이고 → AI가 정리해서 → 홈페이지로 나갑니다.</div>
+    <div class="meta">8명 · 3월 ~ 4월 (8주) · 기준일 2026-04-20</div>
+  </div>
+
+  <!-- QUICK FACTS -->
+  <div class="section">
+    <div class="facts">
+      <div class="fact"><div class="n">8</div><div class="l">팀 멤버</div></div>
+      <div class="fact"><div class="n">6</div><div class="l">진행 주차</div></div>
+      <div class="fact"><div class="n">2</div><div class="l">GitHub 레포</div></div>
+      <div class="fact"><div class="n">4</div><div class="l">AI 명령어</div></div>
+    </div>
+  </div>
+
+  <!-- ① 3-COL FLOW -->
+  <div class="section">
+    <div class="section-head">
+      <span class="num">01</span>
+      <h2>전체 흐름 — 입력 → 저장 → 출력</h2>
+      <span class="tag">3단계</span>
+    </div>
+
+    <div class="flow">
+
+      <!-- INPUT -->
+      <div class="col">
+        <div class="col-label">INPUT · 멤버 8명</div>
+        <div class="col-title">Obsidian으로 작성</div>
+        <div class="col-desc">멤버들이 같은 vault를 공유하며 매주 과제와 인사이트를 기록합니다. 저장하면 자동으로 GitHub에 푸시됩니다.</div>
+
+        <div class="chips">
+          <div class="chip admin">다다</div>
+          <div class="chip">비비안</div>
+          <div class="chip">띵끄</div>
+          <div class="chip">흐민</div>
+          <div class="chip">에밀리</div>
+          <div class="chip">다니</div>
+          <div class="chip">오웬</div>
+          <div class="chip">젬마</div>
+        </div>
+        <div style="font-size: 11px; color: var(--gray); margin-top: auto; padding-top: 12px; border-top: 1px solid var(--line);">
+          <strong style="color: var(--ink);">다다</strong>는 운영자 — 매주 회의 진행과 배포를 맡습니다.
+        </div>
+      </div>
+
+      <!-- STORAGE -->
+      <div class="col highlight">
+        <div class="col-label">STORAGE · GitHub 레포 2개</div>
+        <div class="col-title">콘텐츠 원본 + 사이트 코드</div>
+        <div class="col-desc">vault의 공개 폴더만 Astro 레포로 복사되어 가공됩니다. 비공개 원본은 절대 밖으로 나가지 않습니다.</div>
+
+        <div class="repo focus">
+          <div class="rn">selfishclub-all/aaa</div>
+          <div class="rd">멤버들이 작성한 Obsidian 원본 (vault)</div>
+        </div>
+        <div class="pipe">↓ <span class="arr">/publish</span> · 공개 폴더만 동기화</div>
+        <div class="repo focus">
+          <div class="rn">selfishclub/aaa-admin</div>
+          <div class="rd">Astro 정적 사이트 + 어드민 (홈페이지 코드)</div>
+        </div>
+      </div>
+
+      <!-- OUTPUT -->
+      <div class="col">
+        <div class="col-label">OUTPUT · 최종 산출물</div>
+        <div class="col-title">공식 홈페이지</div>
+        <div class="col-desc">누구나 접속할 수 있는 공개 사이트. Vercel이 자동으로 배포합니다.</div>
+
+        <div class="url-box">
+          <div class="big">aaa-homepage<br/>.vercel.app</div>
+          <div class="sub">AAA TEAM Archive</div>
+        </div>
+
+        <div class="tabs">
+          <div class="tab primary">주간 미션</div>
+          <div class="tab">스킬 &amp; 인사이트</div>
+          <div class="tab">갤러리</div>
+          <div class="tab">AI 분석</div>
+          <div class="tab" style="grid-column: span 2;">팀소개</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ② FOLDER MAP -->
+  <div class="section">
+    <div class="section-head">
+      <span class="num">02</span>
+      <h2>뭐가 공개되고 뭐가 숨겨지나</h2>
+      <span class="tag">폴더 매핑</span>
+    </div>
+
+    <div class="folder-map">
+      <div>
+        <div class="folder-col-title pub">✓ 웹사이트에 공개됨</div>
+        <div class="folder-item pub">
+          📁 00_missions/ <span class="arrow">→</span> <span class="tgt">주간 미션</span>
+        </div>
+        <div class="folder-item pub">
+          📁 01_gallery/ <span class="arrow">→</span> <span class="tgt">갤러리</span>
+        </div>
+        <div class="folder-item pub">
+          📁 02_skill&amp;insight/ <span class="arrow">→</span> <span class="tgt">스킬 &amp; 인사이트</span>
+        </div>
+        <div class="folder-item pub">
+          📁 90_analysis/weekly/ <span class="arrow">→</span> <span class="tgt">AI 분석</span>
+        </div>
+        <div class="folder-item pub">
+          📁 91_proposals/ <span class="arrow">→</span> <span class="tgt">AI 제안</span>
+        </div>
+        <div class="folder-item pub">
+          📁 90_analysis/members/ <span class="arrow">→</span> <span class="tgt">팀 소개</span>
+        </div>
+      </div>
+      <div>
+        <div class="folder-col-title">× 비공개 · 팀 내부용</div>
+        <div class="folder-item priv">📁 01_meetings/ &nbsp;회의록</div>
+        <div class="folder-item priv">📁 06_sharing/ &nbsp;발표 자료</div>
+        <div class="folder-item priv">📁 92_status/ &nbsp;출석 · 벌금 현황</div>
+        <div class="folder-item priv">📁 93_attachments/ &nbsp;첨부 원본</div>
+        <div class="folder-item priv">📁 99_meta/ &nbsp;운영 가이드</div>
+        <div class="folder-item priv">📁 99_templates/ &nbsp;템플릿</div>
+      </div>
+    </div>
+
+    <div class="legend" style="margin-top: 14px;">
+      <strong>💡 회의록 원본은 비공개지만 인사이트는 공개됩니다.</strong>
+      &nbsp;운영자가 <code style="font-family: 'Menlo', monospace; background: #fff; padding: 1px 6px; border-radius: 3px; color: #B8860B;">/analyze</code>를 실행하면 AI가 회의록을 읽고 핵심만 추출해 <strong>AI 분석</strong> 탭에 올립니다. 원본은 숨기고, 인사이트만 내보냅니다.
+    </div>
+  </div>
+
+  <!-- ③ AI 명령어 -->
+  <div class="section">
+    <div class="section-head">
+      <span class="num">03</span>
+      <h2>AI가 대신 하는 네 가지</h2>
+      <span class="tag">슬래시 명령어</span>
+    </div>
+
+    <div class="cmds">
+      <div class="cmd">
+        <span class="name">/analyze N</span>
+        <div class="body">
+          <div class="t">주간 분석 자동 생성</div>
+          <div class="d">N주차 멤버 과제 + 회의록을 통째로 읽고 트렌드·키워드·독특한 시각을 리포트로 뽑아낸다.</div>
+        </div>
+      </div>
+      <div class="cmd">
+        <span class="name">/ln N</span>
+        <div class="body">
+          <div class="t">링크드인 초안</div>
+          <div class="d">그 주차 과제를 기반으로 링크드인 포스트 초안을 자동 생성한다.</div>
+        </div>
+      </div>
+      <div class="cmd">
+        <span class="name">/archive</span>
+        <div class="body">
+          <div class="t">아카이브 북 갱신</div>
+          <div class="d">전체 기록을 훑어서 아카이브 북(전자책 형태)을 다시 빌드한다.</div>
+        </div>
+      </div>
+      <div class="cmd">
+        <span class="name">/publish</span>
+        <div class="body">
+          <div class="t">홈페이지 배포</div>
+          <div class="d">공개 폴더만 골라 Astro 레포에 복사 → 빌드 → Vercel로 자동 배포까지.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ④ 운영자 루틴 -->
+  <div class="section">
+    <div class="section-head">
+      <span class="num">04</span>
+      <h2>매주 운영 루틴</h2>
+      <span class="tag">한 눈에 보는 리듬</span>
+    </div>
+
+    <div style="background: #fff; border: 1.5px solid var(--line); border-radius: 14px; padding: 28px 24px;">
+      <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; align-items: stretch;">
+        <div style="text-align: center; padding: 18px 10px; background: var(--yellow-soft); border-radius: 10px;">
+          <div style="font-size: 10px; font-weight: 800; letter-spacing: 1.5px; color: #B8860B; margin-bottom: 6px;">MON–SAT</div>
+          <div style="font-size: 14px; font-weight: 700;">멤버 작성</div>
+          <div style="font-size: 11px; color: #666; margin-top: 4px;">Obsidian에서 과제·인사이트</div>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--yellow);">→</div>
+        <div style="text-align: center; padding: 18px 10px; background: var(--yellow-soft); border-radius: 10px;">
+          <div style="font-size: 10px; font-weight: 800; letter-spacing: 1.5px; color: #B8860B; margin-bottom: 6px;">SUN</div>
+          <div style="font-size: 14px; font-weight: 700;">주간 회의</div>
+          <div style="font-size: 11px; color: #666; margin-top: 4px;">회의록은 비공개 폴더로</div>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--yellow);">→</div>
+        <div style="text-align: center; padding: 18px 10px; background: var(--ink); color: #fff; border-radius: 10px;">
+          <div style="font-size: 10px; font-weight: 800; letter-spacing: 1.5px; color: var(--yellow); margin-bottom: 6px;">SUN 밤</div>
+          <div style="font-size: 14px; font-weight: 700;">/analyze → /publish</div>
+          <div style="font-size: 11px; color: #A6A6AD; margin-top: 4px;">운영자가 실행, 자동 배포</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">© 2026 Selfish Club × AAA TEAM · 이기적으로 만들고, 이기적으로 공유한다.</div>
+</div>
+</body>
+</html>
